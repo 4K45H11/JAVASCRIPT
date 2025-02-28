@@ -1,0 +1,1 @@
+# Javascript tutorial in details
