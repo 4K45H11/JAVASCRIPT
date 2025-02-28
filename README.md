@@ -1,1 +1,1 @@
-# Javascript tutorial in details
+# Javascript log book
