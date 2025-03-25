@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <form id="orderForm">
+            <h2>Product Order Form</h2>
+            <label for="product">Product Name:</label>
+            <select id="product">
+                <option value="Product A">Product A</option>
+                <option value="Product B">Product B</option>
+                <option value="Product C">Product C</option>
+            </select><br><br>
+
+            <label for="quantity">Quantity: </label>
+            <input type="number" id="quantity" /><br><br>
+
+            <label for="adress">Shipping Adress:</label><br>
+            <textarea rows="4" cols="50" id="adress"></textarea><br><br>
+
+            <label for="">Payment Method:</label><br>
+            <label for="card"><input type="radio" value="Credit Card" name="payment" id="card">Credit Card</label><br>
+            <label for="payPal"><input type="radio" value="Pay Pal" name="payment" id="payPal">Pay Pal</label><br>
+            <label for="bank"><input type="radio" value="Bank Transfer" name="payment" id="bank">Bank Transfer</label>
+            <br><br>
+
+            <label for="speed">Delivery Speed:</label>
+            <select id="speed">
+                <option value="standard">Standard</option>
+                <option value="express">Express</option>
+                <option value="sameDay">Same Day</option>
+            </select>
+
+            <input type="submit" value="Place Order">
+        </form>
+        <div id="formResult"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

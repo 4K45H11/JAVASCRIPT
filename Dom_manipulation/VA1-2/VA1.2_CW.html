@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header></header>
+    <main>
+        <label for="nameInput">Enter your name:</label>
+        <input type="text" name="" id="nameInput">
+        <button id="greetButton">Greet</button>
+        <p id="showGreetingMessage"></p>
+
+        <label for="emailInput">Enter your email: </label>
+        <input type="email" name="" id="emailInput">
+        <button id="validateEmail">Validate Email</button>
+        <p id="emailValidationResult"></p>
+
+        <label for="numberInput">Enter a number: </label>
+        <input type="number" id="numberInput"/>
+        <button id="squareButton">Calculate Square</button>
+        <p id="squareItem"></p>
+
+        <label for="urlInput">Enter a URL: </label>
+        <input type="text" id="urlInput">
+        <button id="urlButton">Show Link</button>
+        <p id="linkResult"></p>
+
+        <label for="sentenceInput">Enter a sentence:</label>
+        <input type="text" id="sentenceInput"/>
+        <button id="countButton">Count Words</button>
+        <p id="countResult"></p>
+    </main>
+    <footer></footer>
+    <script>
+        // get the elements
+        const nameInput = document.getElementById("nameInput")
+        const greetButton = document.getElementById("greetButton")
+        const greetingMessage = document.getElementById("showGreetingMessage")
+
+        //perform operations
+        //op1
+        greetButton.addEventListener("click", function(){
+            const userName = nameInput.value
+            greetingMessage.textContent = `Good Morning, ${userName}`
+        })
+        // console.log(nameInput)
+        // console.log(greetButton)
+        // console.log(greetingMessage)
+
+        const emailInput = document.getElementById('emailInput')
+        const validateButton = document.getElementById('validateEmail')
+        const emailValidationResult = document.getElementById('emailValidationResult')
+        //op2
+        validateButton.addEventListener('click', function(){
+            const email = emailInput.value
+            
+            const atIndex = email.indexOf("@")
+            const dotIndex = email.indexOf(".")
+
+            // console.log(atIndex)
+            // console.log(dotIndex)
+
+            if(atIndex < dotIndex && atIndex>0) {
+                emailValidationResult.textContent = `Valid email adress`
+            }
+            else emailValidationResult.textContent = ` Invalid email address`
+        })
+        //op3
+        const numberInput = document.getElementById('numberInput')
+        const squareButton = document.getElementById('squareButton')
+        const squareItem = document.getElementById('squareItem')
+
+        squareButton.addEventListener('click',function(){
+            const numberValue = numberInput.value
+            const square = numberValue * numberValue
+
+            squareItem.textContent = `The square of ${numberValue} is ${square}.`
+        })
+
+        //op4
+        const urlInput = document.getElementById('urlInput')
+        const urlButton = document.getElementById('urlButton')
+        const linkResult = document.getElementById('linkResult')
+
+        urlButton.addEventListener('click',function(){
+            const url = urlInput.value
+            linkResult.innerHTML = `<a target = "_blank" href =${url}>${url}</a>`
+        })
+
+        const sentenceInput = document.getElementById('sentenceInput')
+        const countButton = document.getElementById('countButton')
+        const countResult = document.getElementById('countResult')
+
+        countButton.addEventListener('click',function(){
+            const sentence = sentenceInput.value
+
+            const words = sentence.split(" ")
+           // console.log(words)
+           const wordCount = words.length
+           countResult.textContent = `Word Count : ${wordCount}`
+        })
+
+    </script>
+</body>
+</html>
+
+<!-- note : 1.label for screen reader and visual labeling.connected with i/p field via id
+
+2.There are event listeners that we can attach to btn.
+
+3.process is similar , first create html then get the elemets, perform operations via js as per need
+how the result inside the elemnets via verious functions
+like .innerHTML, .textContent etc.
+
+4.dom element variable names can be same as id or different.
+
+5.'split' special function in JS gives an array of desired result splited by provided input, here we split by " " -> spaces.
+-->

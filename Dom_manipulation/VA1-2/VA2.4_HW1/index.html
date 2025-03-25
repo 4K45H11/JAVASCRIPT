@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h2>Event Register Form</h2>
+        <form id="eventForm">
+            <label for="userName">Name:</label>
+            <input type="text" id="userName"><br><br>
+
+            <label for="userEmail">Email:</label>
+            <input type="text" id="userEmail"><br><br>
+
+            <label for="">Event Type:</label><br>
+
+            <label for="conference"><input type="radio" name="event" value="conference" id="
+                    conference">Conference</label><br>
+
+            <label for="workshop"><input type="radio" name="event" value="workshop" id="workshop">Workshop</label><br>
+
+            <label for="networking"><input type="radio" name="event" value="networking"
+                    id="networking">Networking</label>
+            <br><br>
+
+            <label for="">Dietary Restrictions:</label><br>
+
+            <label for="Vegeterian"><input type="checkbox" name="diet" value="Vegeterian"
+                    id="Vegeterian">Vegeterian</label>
+            <br>
+
+            <label for="Vegan"><input type="checkbox" name="diet" value="Vegan" id="Vegan">Vegan</label><br>
+
+            <label for="gluten"><input type="checkbox" name="diet" value="gluten" id="gluten">Gluten-free</label><br>
+            <br>
+
+            <label for="size">T-shirt Size:</label>
+            <select id="size">
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+            </select><br><br>
+
+            <input type="submit" value="Register">
+        </form>
+        <div id="formResult"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+

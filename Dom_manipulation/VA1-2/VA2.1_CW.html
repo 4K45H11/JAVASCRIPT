@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="optInCheckbox">Checkbox to opt-in:</label>
+        <br>
+        <input type="checkbox" id="optInCheckbox"> Opt in
+        <p id="optInResult"></p>
+
+        <label for="">Choose pizza toppings</label>
+        <br>
+        <input type="checkbox" name="toppings" value="Pepperoni">Pepperoni
+        <input type="checkbox" name="toppings" value="Olives">Olives
+        <input type="checkbox" name="toppings" value="Mushrooms" >Mushrooms
+        <p id="toppingsResult"></p>
+
+        <label for="">Choose your preferred programming language:</label>
+        <br>
+        <input type="checkbox" name="languages" value="javaScript">javaScript
+        <br>
+        <input type="checkbox" name="languages" value="Python"> Python
+        <br>
+        <input type="checkbox" name="languages" value="Java">Java
+        <br>
+        <p id="languageResult"></p>
+
+    </div>
+    <script>
+        const optInCheckbox = document.getElementById('optInCheckbox')
+        const optInResult = document.getElementById('optInResult')
+
+        optInCheckbox.addEventListener('change',function(){
+           // console.log(optInCheckbox.checked)
+            if(optInCheckbox.checked){
+            optInResult.textContent = `You are subscribed.`
+            }
+            else optInResult.textContent = ''
+        })
+
+        //getElementsByName...
+        const toppingsCheckboxes = document.getElementsByName('toppings')
+        const toppingsResult = document.getElementById('toppingsResult')
+
+        for(let i = 0; i<toppingsCheckboxes.length; i++){
+            toppingsCheckboxes[i].addEventListener('change', function(){
+                const selectedToppings = []
+                for(let j = 0; j<toppingsCheckboxes.length; j++){
+                    if(toppingsCheckboxes[j].checked){
+                        selectedToppings.push(toppingsCheckboxes[j].value)
+                    }
+                }
+
+               // console.log(selectedToppings)
+
+               toppingsResult.textContent = `Selected Toppings: ${selectedToppings.join(", ")}`
+                
+            })
+        }
+
+        //console.log(toppingsCheckboxes)
+
+
+        const languageCheckBoxes = document.getElementsByName('languages')
+        const languageResult = document.getElementById('languageResult')
+
+        for(let i = 0; i<languageCheckBoxes.length; i++){
+            languageCheckBoxes[i].addEventListener('change',function(){
+                const selectedLanguage = []
+                for(let j = 0; j<languageCheckBoxes.length; j++){
+                    if(languageCheckBoxes[j].checked) selectedLanguage.push(languageCheckBoxes[j].value)
+                }
+                
+                languageResult.textContent = `Selected Languages are:  ${selectedLanguage.join(", ")}` //using template literals and join method.
+            })
+        }
+    </script>
+</body>
+</html>
+
+<!-- 
+notes:
+
+1. name is used instead of id as per need,
+ 
+2. Node lists are similar to arrays, but don't have all the features of an array. have methods like .length(),
+ 
+3..join(', ')-> join mehod works on array similar to split but does the opposite by displaying an array like a string by joining them via given value in join method. 
+
+
+-->

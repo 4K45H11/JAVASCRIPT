@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1>User Profile Form</h1>
+
+        <form id="userProfileForm">
+            <label for="userName">Enter your name:</label>
+            <input type="text" id="userName">
+            <br><br>
+
+            <label for="">Enter your full adress:</label>
+            <br>
+            <textarea rows="5" cols="30" id="fullAdress"></textarea>
+            <br><br>
+
+            <label for="">Select your gender:</label><br>
+            <label for="male"><input type="radio" name="gender" value="male" id="male">Male</label><br>
+            <label for="female"><input type="radio" name="gender" value="female" id="female">Female</label><br>
+            <label for="other"><input type="radio" name="gender" value="others" id="other">Other</label>
+            <br><br>
+
+            <label for="">Select multiple interests:</label><br>
+            <label for="read"><input type="checkbox" name="interest" value="reading" id="read">Reading</label><br>
+            <label for="garden"><input type="checkbox" name="interest" value="gardening"
+                    id="garden">Gardening</label><br>
+            <label for="paint"><input type="checkbox" name="interest" value="painting" id="paint">Painting</label>
+
+            <br><br>
+            <label for="">Select favourite color:</label><br>
+            <select id="colorSelect">
+                <option value="Red">Red</option>
+                <option value="Blue">Blue</option>
+                <option value="Green">Green</option>
+
+            </select>
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <div id="formResult"></div>
+    </div>
+    <script>
+        const userProfileForm = document.getElementById('userProfileForm')
+        
+        userProfileForm.addEventListener('submit',function(event){
+            event.preventDefault()//it stops the page from reloading to a url when submit btn is clicked.
+            const userName = document.getElementById('userName').value
+           
+
+            const fullAdress = document.getElementById('fullAdress').value
+           
+
+            const genderSelected = document.querySelector('input[name = "gender"]:checked').value
+            
+            
+            const interests = document.querySelectorAll('input[name = "interest"]:checked')
+            let selectedInterests = []
+            for(let i = 0; i<interests.length; i++){
+                selectedInterests.push(interests[i].value)
+            }
+            //console.log(selectedInterests)
+            const favouriteColor = document.getElementById('colorSelect').value
+            //console.log(favouriteColor.value)
+
+            const userInputValues = `
+            <h2>Submitted Information</h2>
+            <p>Name: ${userName}</p>
+            <p>Full Adress: ${fullAdress}</p>
+            <p>Gender: ${genderSelected}</p>
+            <p>Interests: ${selectedInterests.join(", ")}</p>
+            <p>Favourite Color: ${favouriteColor}</p>
+            `
+            const divElement = document.getElementById('formResult')
+            divElement.innerHTML = userInputValues
+
+        })
+
+        
+        
+        
+    </script>
+</body>
+
+</html>
+
+<!-- notes:
+1.submit -> in addEventListener
+
+2.preventDefault()-> prevents page from opening a new url(don't want to send the user somewhere.) when submit btn is clicked. This prevents default behaviour of type submit.
+
+3.querySelectorAll() -> similar to querySelector but get all the checked values.
+-->

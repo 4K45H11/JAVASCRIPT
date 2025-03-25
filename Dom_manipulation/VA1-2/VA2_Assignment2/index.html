@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h2>User Waitlist Form</h2>
+        <form id="userDetailsFrom">
+            <label for="userName"><strong>Full Name:</strong> <input type="text" id="userName"></label><br><br>
+            <label for="userPh"><strong>Phone Number:</strong> <input type="number" id="userPh"></label><br><br>
+            <label for="userEmail"><strong>Email Id:</strong> <input type="text" id="userEmail"></label><br>
+            <br>
+
+            <label><strong>Gender:</strong></label><br>
+            <label for="male"><input type="radio" name="gender" value="male" id="male">Male</label><br>
+            <label for="female"><input type="radio" name="gender" value="female" id="female">Female</label><br>
+            <label for="other"><input type="radio" name="gender" value="other" id="other">Other</label><br>
+            <br>
+
+            <label><strong>Are you a college graduate?:</strong></label><br>
+            <label for="yes"><input type="radio" name="graduate" value="yes" id="yes">Yes</label><br>
+            <label for="no"><input type="radio" name="graduate" value="no" id="no">No</label><br>
+            <label for="drop"><input type="radio" name="graduate" value="dropout" id="drop">Dropout</label><br>
+            <br>
+
+            <label for=""><strong>Are you working anywhere full-time or part-time?:</strong></label>
+            <select id="workStatus">
+                <option value="Working Full Time">Working Full Time</option>
+                <option value="Working Part Time">Working part Time</option>
+                <option value="Not Working Anywhere">Not Working Anywhere</option>
+            </select><br><br>
+
+            <label for="reason"><strong>Why do you want to learn web development?</strong></label><br>
+            <textarea id="reason" rows="5" cols="30"></textarea><br><br>
+
+            <label for=""><strong>How did you came to know about us?</strong></label><br>
+            <label for="youtube"><input type="checkbox" name="media" value="youtube" id="youtube">Youtube</label><br>
+            <label for="instagram"><input type="checkbox" name="media" value="instagram"
+                    id="instagram">Instagram</label><br>
+            <label for="linkdin"><input type="checkbox" name="media" value="linkdin" id="linkdin">Linkdin</label><br>
+            <label for="twitter"><input type="checkbox" name="media" value="twitter" id="twitter">Twitter</label><br>
+            <label for="friendsAndFamily"><input type="checkbox" name="media" value="friendsAndFamily"
+                    id="friendsAndFamily">Friends and Family</label><br>
+            <label for="other"><input type="checkbox" name="media" value="other" id="other">Other</label><br>
+            <br>
+
+            <input type="checkbox" id="declaration">
+            <label for="declaration"><strong>I confirm that all information in this form is factually true.</strong></label><br><br>
+
+            <input type="submit" value="Submit Details">
+        </form>
+
+        <div id="formResult"></div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

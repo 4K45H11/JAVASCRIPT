@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="">Choose your gender</label>
+        <br>
+        <input type="radio" name="gender" value="Male"/> Male
+        <br>
+        <input type="radio" name="gender" value="Female"> Female
+        <br>
+        <input type="radio" name="gender" value="Others"> Others
+        <p id="genderResult"></p>
+
+        <label for="">Choose your meal prefference: </label>
+        <br>
+        <input type="radio" name="meal" value="Vegeterian">Vegeterian
+        <br>
+        <input type="radio" name="meal" value="Non-Vegeterian">Non-Vegeterian
+        <p id="mealPreferenceResult"></p>
+
+        <label for="">Choose a size: </label>
+        <br>
+        <input type="radio" name="size" value="Small" />Small
+        <br>
+        <input type="radio" name="size" value="Medium" />Medium
+        <br>
+        <input type="radio" name="size" value="Large" />Large
+        <p id="sizeResult"></p>
+        
+    </div>
+    <script>
+
+        const genderRadioButtons = document.getElementsByName('gender')
+        const genderResult = document.getElementById('genderResult')
+
+        for(let i = 0; i<genderRadioButtons.length; i++){
+            genderRadioButtons[i].addEventListener('change',function(){
+                const selectedRadioBtn = document.querySelector('input[name="gender"]:checked').value //we want a dom element where name is gender and the input element is checked.then fetch the value via ".value".
+
+                genderResult.textContent = `Selected Gender: ${selectedRadioBtn}`
+            })
+        }
+
+        const mealRadioButtons = document.getElementsByName('meal')
+        const mealPreferenceResult = document.getElementById('mealPreferenceResult')
+
+        for(let i = 0; i<mealRadioButtons.length; i++){
+            mealRadioButtons[i].addEventListener('change',function(){
+                const selectedMealPreference = document.querySelector('input[name = "meal"]:checked').value
+
+                mealPreferenceResult.textContent = `Your Selected Meal Prefference:  ${selectedMealPreference}`
+
+            })
+        }
+
+
+        const sizeRadioButtons = document.getElementsByName('size')
+        const sizeResult = document.getElementById('sizeResult')
+
+        for(let i = 0; i<sizeRadioButtons.length; i++){
+            sizeRadioButtons[i].addEventListener('change', function(){
+                const selectedSize = document.querySelector('input[name = "size"]:checked').value
+
+                sizeResult.textContent = `Selected Size: ${selectedSize}`
+            })
+        }
+        
+    </script>
+</body>
+</html>
+
+<!-- 
+notes:
+1. unlike checkboxes you can select only one radio button. 
+2. querySelector is really useful, shown in upper examples.
+-->

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form id="feedBackForm">
+            <label for="userName">Name:</label>
+            <input type="text"  id="userName">
+            <br><br>
+
+            <label for="feedbackText">Feedback:</label><br>
+            <textarea rows="5" cols="30" id="feedbackText"></textarea>
+            <br><br>
+
+            <label for="">Rate our service:</label><br>
+            <label for="excellent"><input type="radio" value="excellent" name="service" id="excellent">Excellent</label>
+            <br>
+            <label for="good"><input type="radio" name="service" value="good" id="good">Good</label>
+            <br>
+            <label for="fair"><input type="radio" name="service" value="fair" id="fair">Fair</label>
+            <br><br>
+
+            <label for="">Select topics of interest:</label><br>
+            <label for="technology"><input type="checkbox" name="interest" value="technology" id="technology">Technology</label>
+            <br>
+            <label for="travel"><input type="checkbox" value="travel" name="interest" id="travel">Travel</label>
+            <br>
+            <label for="food"><input type="checkbox" value="food" name="interest" id="food">Food</label>
+            <br><br>
+
+            <label for="">Overall Experience:</label>
+            <select  id="overallExperience">
+                <option value="Very Satisfied">Very Satisfied</option>
+                <option value="Satisfied">Satisfied</option>
+                <option value="Neutral">Neutral</option>
+            </select><br><br>
+
+            <input type="submit" value="Submit">
+
+        </form>
+        <div id="formResult"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

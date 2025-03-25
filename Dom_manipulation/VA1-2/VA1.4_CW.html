@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+
+        <label for="nameInput">Enter your name</label>
+        <input type="text" id="nameInput">
+        <button id="showNameBtn">Show Name</button>
+        <button id="styleBtn">Change Style</button>
+        <p id="nameResult"></p>
+
+    </div>
+    <script>
+        const nameInput = document.querySelector('#nameInput')
+        // const nameInput = document.querySelector('input')
+        const showNameBtn = document.querySelector('#showNameBtn')
+        const nameResult = document.querySelector('#nameResult')
+        const styleBtn = document.querySelector('#styleBtn')
+
+        styleBtn.addEventListener('click',function(){
+            nameResult.style.color = 'green'
+            nameResult.style.backgroundColor = 'yellow'
+            nameResult.style.padding = '4px'
+        })
+
+
+        showNameBtn.addEventListener('click',function(){
+            const nameValue = nameInput.value
+            nameResult.textContent = `Your name: ${nameValue}`
+        })
+    </script>
+</body>
+</html>
+
+<!-- notes:
+1.querySelector is used to get dom elements by both id or class name, via any elemnt also -->
