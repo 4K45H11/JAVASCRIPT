@@ -10,5 +10,6 @@
         <p>get data from textareas, input(type-text) and add eventlistners to the buttons or elements.</p>
         <p>Event listners like: click,change,submit</p>
         <p>Create and submit forms, style dom-elements.</p>
+        <p>write HTML code using javascript, use of createElement, appendChild, className, plarentElement, childElemnts.</p>
     </li>
 </ul>

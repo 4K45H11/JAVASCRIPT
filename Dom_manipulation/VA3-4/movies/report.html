@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Report</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Movies Database</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="movies.html">Movies</a></li>
+                        <li class="nav-item"><a class="nav-link" href="report.html">Report</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <section class="container mt-4">
+        <div>
+            <h1>Movie Report</h1>
+        </div>
+        <hr>
+
+        <div class="row" id="movie-report">
+
+        </div>
+    </section>
+
+    <script>
+        const movieReport = document.getElementById('movie-report')
+
+        function generateTopMovieReport(){
+            const col = document.createElement('div')
+            col.className = 'col-md-6'
+
+            const card = document.createElement('div')
+            card.className = 'card'
+
+            const cardHeader = document.createElement('div')
+            cardHeader.className = 'card-header'
+
+            const h2 = document.createElement('h2')
+            h2.textContent = `Top-Rated Movie`
+            cardHeader.appendChild(h2)
+
+            const cardBody = document.createElement('div')
+            cardBody.className = 'card-body'
+
+            const titleOfMovie = document.createElement('p')
+            titleOfMovie.innerHTML = `<strong>Title: </strong>Movie 2`
+            cardBody.appendChild(titleOfMovie)
+            
+            const ratingOfMovie = document.createElement('p')
+            ratingOfMovie.innerHTML = `<strong>Rating: </strong>Movie 9.2`
+            cardBody.appendChild(ratingOfMovie)
+
+            const directorOfMovie = document.createElement('p')
+            directorOfMovie.innerHTML = `<strong>Director: </strong>Jane Smith`
+            cardBody.appendChild(directorOfMovie)
+
+            card.appendChild(cardHeader)
+            card.appendChild(cardBody)
+            col.appendChild(card)
+            movieReport.appendChild(col)
+        }
+        function geneRateBestGenreReport(){
+            const col = document.createElement('div')
+            col.className = 'col-md-6'
+
+            const card = document.createElement('div')
+            card.className = 'card'
+
+            const cardHeader = document.createElement('div')
+            cardHeader.className = 'card-header'
+
+            const h2 = document.createElement('h2')
+            h2.textContent = `Most Popular Genre`
+            cardHeader.appendChild(h2)
+
+            const cardBody = document.createElement('div')
+            cardBody.className = 'card-body'
+
+            const genreOfMovie = document.createElement('p')
+            genreOfMovie.innerHTML = `<strong>Genre: </strong>Action`
+            cardBody.appendChild(genreOfMovie)
+
+            const totalNoOfMovies  = document.createElement('p')
+            totalNoOfMovies.innerHTML = `<strong>Total Movies: </strong>3`
+            cardBody.appendChild(totalNoOfMovies)
+
+            card.appendChild(cardHeader)
+            card.appendChild(cardBody)
+            col.appendChild(card)
+            movieReport.appendChild(col)
+
+        }
+
+
+        generateTopMovieReport()
+        geneRateBestGenreReport()
+        
+    </script>
+
+</body>
+
+</html>
