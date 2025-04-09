@@ -12,4 +12,10 @@
         <p>Create and submit forms, style dom-elements.</p>
         <p>write HTML code using javascript, use of createElement, appendChild, className, plarentElement, childElemnts.</p>
     </li>
+    <li>
+        <h4>Api Handling</h4>
+        <p>Learned about fetch(),post(),delete() methods.</p>
+        <p>error handling is an important part.</p>
+        <p>After fetching data from api we can use as per requirements.</p>
+    </li>
 </ul>
