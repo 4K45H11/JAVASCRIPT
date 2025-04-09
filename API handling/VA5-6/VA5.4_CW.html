@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1>API Post Call</h1>
+        <form id="postForm" action="">
+            <label for="name">Name</label>
+            <input type="text" name="" id="name"><br><br>
+            <label for="message">Message: </label>
+            <input type="text" name="" id="message"><br><br>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="responseContainer"></div>
+    </div>
+    <script>
+        const name = document.querySelector('#name')
+        const message = document.querySelector('#message')
+        const postForm = document.getElementById('postForm')
+        const responseContainer = document.querySelector('#responseContainer')
+
+        postForm.addEventListener('submit', function (event) {
+            event.preventDefault()
+
+            const apiUrl = `https://jsonplaceholder.typicode.com/posts`
+
+            const resquestedData = {
+                name: name.value,
+                message: message.value
+            }
+
+            // POST call syntax
+
+            fetch(apiUrl, {
+                method: 'POST', //post is the way to send data to server.
+                body: JSON.stringify(resquestedData), // we can't send the json format directly so converting into string.which stays same JSON format just type is string.
+                headers: {
+                    'Content-Type': 'application/json' // saying the data is sent here is a stringified JSON data.
+                }
+
+            })
+                .then(function (response) {
+                    return response.json() //converting the stringified data from server to human readable JSON format.
+                })
+                .then(function(data){ // we are not nameing the functions but previously we were doing that , it does not matter as we are not going to use the function outside. so ii is fine.
+                    
+                    if(data){
+                        //console.log(data)
+                        // responseContainer.innerHTML = `<p><strong>Name:</strong> ${data.name}</p>
+                        // <p><strong>Message:</strong> ${data.message}</p>
+                        // `
+                        responseContainer.textContent = JSON.stringify(data)
+                    }
+                    else{
+                        responseContainer.textContent = `Failed to make the POST call.`
+                    }
+                })
+                .catch(function(error){
+                    responseContainer.textContent = `An unexpected error has occuered while making post call.`
+                })
+        })
+
+    </script>
+</body>
+
+</html>
+
+<!--
+ Doubts:
+1. can we just make post calls without making any fetch call
+
+ -->

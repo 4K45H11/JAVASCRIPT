@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #sending {
+            display: none;
+            color: blue;
+        }
+
+        #success {
+            display: none;
+            color: green;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-3">Add Employee</h1>
+        <form id="empDetails">
+            <label for="name">Name:</label><br>
+            <input type="text" name="" id="name"><br><br>
+
+            <label for="age">Age:</label><br>
+            <input type="age" name="" id="age"><br><br>
+
+            <label for="position">Position: </label><br>
+            <input type="text" name="" id="position"><br><br>
+
+            <label for="dept">Department: </label><br>
+            <input type="text" name="" id="dept"><br><br>
+
+            <label for="salary">Salary: </label><br>
+            <input type="text" name="" id="salary"><br><br>
+
+            <button class="btn btn-primary">Add Employee</button>
+        </form>
+
+        <div class="mt-3" id="sending">Sending data...</div>
+        <div class="mt-3" id="success">Employee added successfully.</div>
+
+    </div>
+
+    <script>
+
+        const empDetails = document.querySelector('#empDetails')
+
+        const name = document.querySelector('#name')
+        const age = document.querySelector('#age')
+        const position = document.querySelector('#position')
+        const department = document.querySelector('#dept')
+        const salary = document.querySelector('#salary')
+
+        const sending = document.querySelector('#sending')
+        const success = document.querySelector('#success')
+
+        const apiUrl = `https://employee-add-backend-Student-neoG-Ca.replit.app/employee`
+
+        empDetails.addEventListener('submit', function (event) {
+            event.preventDefault()
+
+            sending.style.display = 'block'
+
+            const newEmp = {
+                name: name.value,
+                age: age.value,
+                position: position.value,
+                department: department.value,
+                salary: salary.value,
+            }
+
+            fetch(apiUrl, {
+                method: 'POST',
+                body: JSON.stringify(newEmp),
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+                .then(function (response) {
+                    return response.json()
+                })
+                .then(function(data){
+                    console.log(data)
+                    if(data){
+                        sending.style.display = 'none'
+                        success.style.display = 'block'
+                    }
+                    else{
+                        success.innerHTML = ``
+                        success.textContent = `Something went wrong.`
+                        success.style.color = 'red'
+                    }
+                })
+                .catch(function(error){
+                    success.innerHTML = ``
+                    success.textContent = `Something went wrong.`
+                    success.style.color = 'red'
+                })
+        })
+    </script>
+</body>
+
+</html>

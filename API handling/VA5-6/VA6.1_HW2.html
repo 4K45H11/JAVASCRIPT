@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Employee List</h1>
+        <ul id="employeeList"></ul>
+    </div>
+    <script>
+
+        const employeeList = document.getElementById('employeeList')
+        
+        const apiUrl = `https://employee-management-backend-student-neog-ca.replit.app/employees`
+
+        function fetchEmployee(){
+            employeeList.innerHTML = `Data Loading...`
+            fetch(apiUrl)
+                .then(function(response){
+                    return response.json()
+                })
+                .then(function(data){
+                    if(data){
+                       // console.log(data)
+                        employeeList.innerHTML = ``
+                        for(let i = 0; i<data.length; i++){
+                            const listItem = document.createElement('li')
+
+                            listItem.textContent = `${data[i].name} - ${data[i].gender} - ${data[i].department}`
+                            employeeList.appendChild(listItem)
+                        }
+                    }
+                    else{
+                        employeeList.textContent = `Something went wrong.`
+                    }
+                })
+                .catch(function(error){
+                    employeeList.textContent = `Error occured while fetching the employees.`
+                })
+        }
+        fetchEmployee()
+
+    </script>
+</body>
+</html>

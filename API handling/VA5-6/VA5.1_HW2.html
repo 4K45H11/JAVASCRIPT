@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>JokeAPI - Programming Joke</h1>
+        <button id="jokeBtn">Get Programming Joke</button>
+        <p id="jokeResult"></p>
+    </div>
+    <script>
+
+        const apiUrl = `https://v2.jokeapi.dev/joke/Programming?type=double`
+
+        const jokeBtn = document.getElementById('jokeBtn')
+        const jokeResult = document.getElementById('jokeResult')
+
+        jokeBtn.addEventListener('click',function(){
+            
+            fetch(apiUrl)
+            .then(function responseHandler(response){
+                return response.json()
+            })
+            .then(function dataHandler(data){
+                jokeResult.textContent = `${data.joke}`
+            })
+            .catch(function errorHandler(error){
+                jokeResult.textContent = `Some Error Occured While Fetching the API Data.`
+            })
+
+            
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-3">Book Database</h1>
+        <h2 class="mt-3">GET Request</h2>
+        <button class="btn btn-primary mt-3" id="getBtn">Get Data</button>
+        <div id="getContainer"></div>
+
+        <h2 class="mt-3">POST Request</h2>
+
+        <form id="formInput">
+            <label class="form-label" for="name">Book Name:</label><br>
+            <input class="form-control" type="text" name="" id="name"><br>
+
+            <label class="form-label" for="author">Author:</label><br>
+            <input class="form-control" type="text" name="" id="author"><br>
+
+            <button class="btn btn-success mt-3" type="submit">Submit</button>
+        </form>
+
+        <div class="mt-3" id="postContainer"></div>
+    </div>
+    <script>
+
+        const getBtn = document.getElementById('getBtn')
+        const getContainer = document.getElementById('getContainer')
+        const bookName = document.getElementById('name')
+        const author = document.getElementById('author')
+        const postContainer = document.getElementById('postContainer')
+        const formInput = document.getElementById('formInput')
+
+        const apiUrl = `https://post-books-student-neog.replit.app/books`
+
+        const booklist = []
+
+        function updateGetBookList(list){
+            getContainer.innerHTML = booklist.join('')
+        }
+
+        formInput.addEventListener('submit', function (event) {
+            event.preventDefault()
+
+            const newResponse = {
+                author: author.value,
+                bookName: bookName.value
+            }
+
+            fetch(apiUrl, {
+                method: 'POST',
+                body: JSON.stringify(newResponse),
+                headers: {
+                    'content-type' : 'application/json'
+                }
+            })
+                .then(function (response) {
+                    return response.json()
+                })
+                .then(function (data) {
+                    if (data) {
+                        console.log(data)
+                        postContainer.textContent = JSON.stringify(data)
+                    }
+                    else {
+                        postContainer.textContent = `Something went wrong.`
+                    }
+
+                })
+                .catch(function (error) {
+                    postContainer.textContent = 'error occured while posting data.'
+                })
+        })
+
+        getBtn.addEventListener('click',function(){
+            fetch(apiUrl).then(function(response){
+                return response.json()
+            })
+            .then(function(data){
+                const Id = `POST ID: ${data[data.length-1]._id}`
+                const body = `${JSON.stringify(data[data.length-1])}`
+
+                const book = `<div class = "card mt-3 px-3 py-4">
+                        <h4>${Id}</h4>
+                        <p>${body}</p>
+                    </div>`
+                booklist.push(book) 
+
+                updateGetBookList(booklist)   
+            })
+        })
+
+    </script>
+</body>
+
+</html>

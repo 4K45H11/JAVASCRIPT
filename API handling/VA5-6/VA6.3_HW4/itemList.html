@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <style>
+        #loading{
+            display: none;
+            background-color: rgb(197, 221, 241);
+            color: blue;
+        }
+
+        #error{
+            display: none;
+            background-color: rgb(234, 215, 210);
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <div>
+                    <a class="navbar-brand" href="index.html">Inventory Management</a>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="itemList.html">Item List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="addItem.html">Add Items</a></li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="container py-4">
+
+        <h1>Item List</h1>
+
+        <label class="form-label" for="">Filter by Category: </label><br>
+        <select class="form-select" name="" id="selectedType">
+            <option value="all">All</option>
+            <option value="Perishable">Perishable</option>
+            <option value="Non-Perishable">Non-Perishable</option>
+        </select>
+
+        <div class="p-2 my-3" id="loading">Loading data...</div>
+        <div class="p-2 my-3" id="error"></div>
+
+        <ul  class="row mt-4" style="list-style: none; padding: 1%;" id="itemLists"></ul>
+
+    </main>
+    <footer></footer>
+
+    <script src="list.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

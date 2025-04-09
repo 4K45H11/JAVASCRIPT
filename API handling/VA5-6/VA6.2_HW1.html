@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <style>
+        #loading {
+            display: none;
+        }
+
+        #success {
+            color: green;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-4">
+        <h1>Add a Movie</h1>
+
+        <form id="movieInput">
+            <label for="title">Title:</label><br>
+            <input type="text" name="" id="title"><br><br>
+
+            <label for="r_year">Release Year:</label><br>
+            <input type="number" name="" id="r_year"><br><br>
+
+            <label for="genre">Genre:</label><br>
+            <select name="" id="genre">Genre
+                <option value="Action">Action</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Romance">Romance</option>
+                <option value="Drama">Drama</option>
+            </select><br><br>
+
+            <label for="director">Director:</label><br>
+            <input type="text" name="" id="director"><br><br>
+
+            <label for="actors">Actors:</label><br>
+            <input type="text" name="" id="actors"><br><br>
+
+            <label for="lang">Language:</label><br>
+            <input type="text" name="" id="lang"><br><br>
+
+            <label for="country">Country:</label><br>
+            <select name="" id="country">
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="China">China</option>
+            </select><br><br>
+
+            <label for="rating">Rating:</label><br>
+            <input type="number" name="" id="rating"><br><br>
+
+            <label for="plot">Plot:</label><br>
+            <textarea name="" rows="3" cols="20" id="plot"></textarea><br><br>
+
+            <label for="awards">Awards:</label><br>
+            <input type="text" name="" id="awards"><br><br>
+
+            <label for="poster">Poster URL:</label><br>
+            <input type="text" name="" id="poster"><br><br>
+
+            <label for="trailer">Trailer URL:</label><br>
+            <input type="text" name="" id="trailer"><br><br>
+
+            <button class="btn btn-primary" type="submit">Add Movie</button>
+        </form>
+        <div class="mt-3" id="loading">loading....</div>
+        <div class="mt-3" id="success">Movie added successfully.</div>
+        <div class="mt-3" id="errorContainer"></div>
+    </div>
+
+    <script>
+        const movieInput = document.querySelector('#movieInput')
+
+        const loadingContainer = document.querySelector('#loading')
+        const successContainer = document.querySelector('#success')
+        const errorContainer = document.querySelector('#errorContainer')
+
+        const apiUrl = `https://va-5-assignment-express-student-neog.replit.app/movies`
+
+        movieInput.addEventListener('submit', function (event) {
+            event.preventDefault()
+
+            loadingContainer.style.display = 'block'
+            successContainer.style.display = 'none'
+
+            const title = document.querySelector('#title').value
+            const r_year = document.querySelector('#r_year').value
+            const genre = document.querySelector('#genre').value
+            const director = document.querySelector('#director').value
+            const actors = document.querySelector('#actors').value
+            const lang = document.querySelector('#lang').value
+            const country = document.querySelector('#country').value
+            const rating = document.querySelector('#rating').value
+            const plot = document.querySelector('#plot').value
+            const awards = document.querySelector('#awards').value
+            const poster = document.querySelector('#poster').value
+            const trailer = document.querySelector('#trailer').value
+
+            const newMovie = {
+                title : title,
+                releaseYear : r_year,
+                genre : genre,
+                director : director,
+                actors : actors,
+                language : lang,
+                country : country,
+                rating : rating,
+                plot : plot,
+                awards : awards,
+                posterUrl : poster,
+                trailerUrl : trailer
+            }
+
+            fetch(apiUrl,{
+                method : 'POST',
+                body : JSON.stringify(newMovie),
+                headers : {
+                    'content-type' : 'application/json'
+                }
+            })
+                .then(function (response) {
+                    return response.json()
+                })
+                .then(function (data) {
+
+                    if(data){
+                        loadingContainer.style.display = 'none'
+                        successContainer.style.display = 'block'
+
+                        console.log(data)
+                    }
+                    else{
+                        errorContainer.textContent = `Something went wrong.`
+                        errorContainer.style.color = 'red'
+                        loadingContainer.style.display = 'none'
+                        successContainer.style.display = 'none'
+                    }
+                    
+                })
+                .catch(function(error){
+                    errorContainer.textContent = `Something went wrong.`
+                    errorContainer.style.color = 'red'
+                    loadingContainer.style.display = 'none'
+                    successContainer.style.display = 'none'
+                })
+        })
+
+    </script>
+</body>
+
+</html>

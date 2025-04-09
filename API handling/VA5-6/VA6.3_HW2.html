@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container p-4">
+        <h1 class="mt-3">Employee Management</h1>
+        <div class="mt-3" id="successMsg"></div>
+        <ul style="list-style: none; padding: 0%;" class="row mt-3" id="employeeList"></ul>
+    </div>
+    <script>
+
+        const employeeList = document.getElementById('employeeList')
+        const successMsg = document.getElementById('successMsg')
+
+        const apiUrl = `https://employee-management-backend-student-neog-ca.replit.app/employees`
+
+        function fetchEmployee() {
+            employeeList.innerHTML = `Data Loading...`
+            fetch(apiUrl)
+                .then(function (response) {
+                    return response.json()
+                })
+                .then(function (data) {
+                    if (data) {
+                        successMsg.innerHTML = ``
+                        // console.log(data)
+                        employeeList.innerHTML = ``
+                        for (let i = 0; i < data.length; i++) {
+                            const listItem = document.createElement('li')
+                            listItem.className = `my-2 col-md-12`
+
+                            listItem.innerHTML = `${data[i].name} - Department: ${data[i].department} - Gender: ${data[i].gender} <button id="deleteBtn" data-id="${data[i]._id}" class="btn btn-warning float-end">Delete</button>`
+                            employeeList.appendChild(listItem)
+                        }
+                    }
+                    else {
+                        employeeList.textContent = `Something went wrong.`
+                    }
+
+                    const deleteBtns = document.querySelectorAll('#deleteBtn')
+
+                    for (let i = 0; i < deleteBtns.length; i++) {
+                        deleteBtns[i].addEventListener('click', function (event) {
+                            const empId = event.target.getAttribute('data-id')
+                            //console.log(empId)
+                            const apiDelUrl = `${apiUrl}/${empId}`
+
+                            fetch(apiDelUrl, {
+                                method: 'DELETE'
+                            })
+                                .then(function (response) {
+                                    return response.json()
+                                })
+                                .then(function(data){
+                                    if(data){
+                                        successMsg.textContent = `Employee details deleted successfully.`
+                                        successMsg.style.color = `green`
+                                        fetchEmployee()
+                                    }
+                                    else{
+                                        successMsg.textContent = `delete went wrong.`
+                                        fetchEmployee()
+                                    }
+                                })
+                        })
+                    }
+                })
+                .catch(function (error) {
+                    employeeList.textContent = `Error occured while fetching the employees.`
+                })
+        }
+        fetchEmployee()
+
+    </script>
+</body>
+
+</html>

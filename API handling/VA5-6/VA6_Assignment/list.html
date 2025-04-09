@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <style>
+        #loading {
+            display: none;
+            background-color: rgb(197, 221, 241);
+            color: blue;
+        }
+
+        #error {
+            display: none;
+            background-color: rgb(234, 215, 210);
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <div>
+                    <a class="navbar-brand" href="index.html">ICC Player Management</a>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="list.html">Player List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="add.html">Add Player</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        <h1 class="mt-3">Player List</h1>
+        <label class="form-label mt-3" for="roleFilter">Filtering by Role:</label><br>
+        <select class="form-select" name="" id="roleFilter">
+            <option value="all">All Players</option>
+            <option value="Batsman">Batsman</option>
+            <option value="Bowler">Bowler</option>
+            <option value="All-Rounder">All Rounder</option>
+        </select><br>
+
+        <div class="p-2" id="loading">Loading players details...</div>
+        <div class="p-2" id="error"></div><br>
+
+        <ul style="list-style: none; padding: 1%;" class=" row" id="playerList"></ul>
+    </main>
+    <footer></footer>
+    <script src="list.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

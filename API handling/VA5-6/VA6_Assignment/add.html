@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <style>
+        #loading {
+            display: none;
+            background-color: rgb(197, 221, 241);
+            color: blue;
+        }
+
+        #success {
+            display: none;
+            background-color: rgb(211, 234, 209);
+            color: green;
+        }
+
+        #error {
+            display: none;
+            background-color: rgb(234, 215, 210);
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav  class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <div>
+                    <a class="navbar-brand" href="index.html">ICC Player Management</a>
+                </div>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="list.html">Player List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="add.html">Add Player</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    <main class="container p-4">
+        <h1>Add Players</h1>
+
+        <form id="playerDetails">
+
+            <label class="form-label" for="name">Player Full Name:</label><br>
+            <input required class="form-control" type="text" name="" id="name"><br>
+
+            <label class="form-label" for="birthday">Date of Birth:</label><br>
+            <input required class="form-control" type="date" name="" id="birthday"><br>
+
+            <label class="form-label" for="nation">Nationality:</label><br>
+            <input required class="form-control" type="text" name="" id="nation"><br>
+
+            <label class="form-label" for="place">Place of Birth:</label><br>
+            <input required class="form-control" type="text" name="" id="place"><br>
+
+            <label class="form-label" for="address">Contact Address:</label><br>
+            <textarea required class="form-control" rows="4" cols="30" name="" id="address"></textarea><br>
+
+            <label class="form-label" for="phone">Phone Number:</label><br>
+            <input required class="form-control" type="number" name="" id="phone"><br>
+
+            <label class="form-label" for="email">Email Address:</label><br>
+            <input required class="form-control" type="email" name="" id="email"><br>
+
+            <label class="form-label" for="role">Playing Role:</label><br>
+            <select required class="form-select" name="" id="role">
+                <option value="Batsman">Batsman</option>
+                <option value="Bowler">Bowler</option> 
+                <option value="All-Rounder">All Rounder</option>
+            </select><br>
+
+            <label class="form-label" for="battingHand">Batting Hand:</label><br>
+            <select required class="form-select" name="" id="battingHand">
+                <option value="Right Handed">Right Handed</option>
+                <option value="Left Handed">Left Handed</option> 
+                <option value="Both">Both</option>
+            </select><br>
+
+            <label class="form-label" for="bowlingStyle">Bowling Style:</label><br>
+            <select required class="form-select" name="" id="bowlingStyle">
+                <option value="Right-Arm Fast">Right-Arm Fast</option>
+                <option value="Left-Arm Fast">Left-Arm Fast</option> 
+                <option value="Right-Arm Medium">Right-Arm Medium</option>
+                <option value="Left-Arm Medium">Left-Arm Medium</option>
+                <option value="Right-Arm Spin">Right-Arm Spin(Off-Spin)</option>
+                <option value="Left-Arm Spin">Left-Arm Spin(Leg-Spin)</option>
+            </select><br>
+
+            <div class="p-2" id="loading">Adding player details...</div>
+            <div class="p-2" id="success">Player added successfully.</div>
+            <div class="p-2" id="error"></div>
+
+            <br><button type="submit" class="btn btn-primary">Add Player</button>
+        </form>
+
+    </main>
+    <footer></footer>
+    <script src="add.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

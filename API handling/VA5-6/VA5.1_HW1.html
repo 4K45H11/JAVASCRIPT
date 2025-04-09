@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1>To-Do API</h1>
+        <button id="getApiData">Get Data</button>
+        <div id="resultContainer"></div>
+    </div>
+    <script>
+
+        const getApiData = document.querySelector('#getApiData')
+        const resultContainer = document.querySelector('#resultContainer')
+
+        const apiUrl = `https://jsonplaceholder.typicode.com/todos/5`
+
+        getApiData.addEventListener('click', function () {
+            fetch(apiUrl)
+                .then(function responsehandler(response) {
+                    return response.json()
+                })
+                .then(function showData(data) {
+                    //console.log(data)
+                    resultContainer.innerHTML = `UserId : ${data.userId}<br> Title: ${data.title} <br> Complete Status: ${data.completed}`
+                })
+                .catch(function errorHandler(error) {
+                    resultContainer.textContent = `something wrong happended while fetching api data.`
+                    //console.log(error)
+                })
+        })
+
+
+    </script>
+</body>
+
+</html>
